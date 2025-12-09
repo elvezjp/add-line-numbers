@@ -1,7 +1,7 @@
 # テキストファイル行番号付与ツール 仕様書 v1.8.0
 
 **バージョン**: 1.8.0
-**作成日**: 2025年12月9日
+**最終更新日**: 2025年12月9日
 **作成者**: 株式会社エルブズ
 
 ---
@@ -590,8 +590,8 @@ from pathlib import Path
 
 | No | 試験項目 | 実行コマンド/確認方法 | 期待結果 |
 |----|---------|---------------------|---------|
-| M-01 | 基本実行 | `python scripts/add_line_numbers.py test_input test_output` | エラーなく完了し、指定ディレクトリに行番号付きファイルが生成されること |
-| M-02 | 存在しない入力ディレクトリ | `python scripts/add_line_numbers.py nonexistent_dir output` | エラーメッセージが表示され終了コード1で終了すること |
+| M-01 | 基本実行 | `python add_line_numbers.py test_input test_output` | エラーなく完了し、指定ディレクトリに行番号付きファイルが生成されること |
+| M-02 | 存在しない入力ディレクトリ | `python add_line_numbers.py nonexistent_dir output` | エラーメッセージが表示され終了コード1で終了すること |
 
 #### 13.1.3 出力内容確認
 
