@@ -43,7 +43,7 @@ python add_line_numbers.py my_project numbered_output
 入力: inputs
 出力: outputs
 ------------------------------------------------------------
-✓ main/java/com/example/App.java
+✓ src/main.py
 ✓ config/settings.json
 ✓ docs/README.md
 ------------------------------------------------------------
@@ -56,35 +56,48 @@ python add_line_numbers.py my_project numbered_output
 各行の先頭に4桁右揃えの行番号を付与します。
 
 **変換前:**
-```
-package com.example;
+```python
+def hello():
+    print("Hello, World!")
 
-import java.util.List;
-
-public class Example {
-    public void method() {
-        System.out.println("Hello");
-    }
-}
+if __name__ == "__main__":
+    hello()
 ```
 
 **変換後:**
 ```
-   1: package com.example;
-   2:
-   3: import java.util.List;
-   4:
-   5: public class Example {
-   6:     public void method() {
-   7:         System.out.println("Hello");
-   8:     }
-   9: }
+   1: def hello():
+   2:     print("Hello, World!")
+   3:
+   4: if __name__ == "__main__":
+   5:     hello()
 ```
 
 ## 対応ファイル
 
 - **対象**: UTF-8エンコーディングのテキストファイル全般（.py, .java, .js, .json, .xml, .md, .txt 等）
 - **非対応**: バイナリファイル、UTF-8以外のエンコーディング（自動スキップ）
+
+## ファイル構成
+
+```
+add-line-numbers/
+├── add_line_numbers.py   # メインスクリプト
+├── test.py               # ユニットテスト
+├── spec.md               # 詳細仕様書
+├── LICENSE               # MITライセンス
+└── README.md             # このファイル
+```
+
+## テスト
+
+```bash
+# pytestが必要です
+pip install pytest
+
+# テスト実行
+pytest test.py -v
+```
 
 ## License
 
