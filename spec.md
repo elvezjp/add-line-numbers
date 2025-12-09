@@ -1,8 +1,8 @@
-# テキストファイル行番号付与ツール 仕様書 v1.7.0
+# テキストファイル行番号付与ツール 仕様書 v1.8.0
 
-**バージョン**: 1.7.0
-**作成日**: 2025年12月4日
-**作成者**: 冨永善視
+**バージョン**: 1.8.0
+**作成日**: 2025年12月9日
+**作成者**: 株式会社エルブズ
 
 ---
 
@@ -21,7 +21,7 @@
 
 ### 1.2 システムの位置づけ
 
-本ツールは、spec-code-verification プロジェクト群における、ファイル前処理ツールとして位置づけられる。
+本ツールは、テキストファイルの前処理ツールとして位置づけられる。
 
 **関連ツールとの関係**:
 - `add_line_numbers.py` (本ツール): テキストファイルに行番号を付与
@@ -40,49 +40,21 @@
 ### 1.4 ファイル配置
 
 ```
-プロジェクトルート/
-├── scripts/
-│   └── add_line_numbers.py           # 本スクリプト
+add-line-numbers/
+├── add_line_numbers.py               # 本スクリプト
 ├── [入力ディレクトリ]/
-│   └── [テキストファイル群]          # デフォルト: src/
+│   └── [テキストファイル群]          # デフォルト: inputs/
 └── [出力ディレクトリ]/
-    ├── [行番号付きファイル群]        # デフォルト: analysis-input/
+    ├── [行番号付きファイル群]        # デフォルト: outputs/
     └── README.md                      # 自動生成される説明ドキュメント
 ```
 
 **デフォルトの入出力先**:
-- 入力: `src/`
-- 出力: `analysis-input/`
+- 入力: `inputs/`
+- 出力: `outputs/`
 
 **カスタム指定**:
 コマンドライン引数で任意のディレクトリを指定可能
-
-### 1.5 入出力ディレクトリ構成
-
-本ツールは、プロジェクトルート直下の `add_line_numbers_results/` ディレクトリを使用します。
-
-```
-spec-code-verification/
-└── add_line_numbers_results/  # 実行結果ディレクトリ
-    ├── inputs/               # 入力ファイル
-    │   └── text_files/       # テキストファイル
-    └── outputs/             # 出力ファイル（YYYYMMDDNNN/形式）
-        └── YYYYMMDDNNN/     # 日付+通番のディレクトリ
-            ├── line_numbered_files/  # 行番号付きファイル
-            └── README.md             # 自動生成される説明ドキュメント
-```
-
-#### 入力ディレクトリ (`inputs/`)
-
-変換対象のテキストファイルを配置するディレクトリです。
-
-#### 出力ディレクトリ (`outputs/`)
-
-出力ディレクトリは、日付+通番形式（YYYYMMDDNNN）で自動的に作成されます。
-
-各出力ディレクトリには、以下のファイルが生成されます：
-- `line_numbered_files/`: 行番号付きファイル（元のディレクトリ構造を保持）
-- `README.md`: 変換結果の説明ドキュメント（自動生成）
 
 ---
 
@@ -207,32 +179,32 @@ analysis-input/
 ### 3.1 コマンドライン引数
 
 ```bash
-python scripts/add_line_numbers.py [入力ディレクトリ] [出力ディレクトリ]
+python add_line_numbers.py [入力ディレクトリ] [出力ディレクトリ]
 ```
 
 **引数**:
-- `入力ディレクトリ` (オプション): テキストファイルが格納されているディレクトリ（デフォルト: `src`）
-- `出力ディレクトリ` (オプション): 行番号付きファイルの出力先ディレクトリ（デフォルト: `analysis-input`）
+- `入力ディレクトリ` (オプション): テキストファイルが格納されているディレクトリ（デフォルト: `inputs`）
+- `出力ディレクトリ` (オプション): 行番号付きファイルの出力先ディレクトリ（デフォルト: `outputs`）
 
 ### 3.2 使用例
 
 #### 3.2.1 基本的な使用例（デフォルト設定）
 
 ```bash
-# src/ → analysis-input/ に変換
-python scripts/add_line_numbers.py
+# inputs/ → outputs/ に変換
+python add_line_numbers.py
 ```
 
 **処理内容**:
-- 入力: `src/` ディレクトリ内の全ファイル
-- 出力: `analysis-input/` ディレクトリに行番号付きファイルを生成
-- README.md: `analysis-input/README.md` を自動生成
+- 入力: `inputs/` ディレクトリ内の全ファイル
+- 出力: `outputs/` ディレクトリに行番号付きファイルを生成
+- README.md: `outputs/README.md` を自動生成
 
 **出力例**:
 ```
 処理中: 64 個のファイル
-入力: src
-出力: analysis-input
+入力: inputs
+出力: outputs
 ------------------------------------------------------------
 ✓ main/java/com/example/App.java
 ✓ config/settings.json
@@ -240,28 +212,19 @@ python scripts/add_line_numbers.py
 ...
 ------------------------------------------------------------
 完了: 64 個のファイルを処理しました
-✓ README.md を生成しました: analysis-input/README.md
+✓ README.md を生成しました: outputs/README.md
 ```
 
 #### 3.2.2 カスタムディレクトリ指定
 
 ```bash
 # カスタム入力/出力ディレクトリを指定
-python scripts/add_line_numbers.py my_project numbered_output
+python add_line_numbers.py my_project numbered_output
 ```
 
 **処理内容**:
 - 入力: `my_project/` ディレクトリ
 - 出力: `numbered_output/` ディレクトリ
-
-#### 3.2.3 実際の使用例
-
-```bash
-# プロジェクトの処理例
-python scripts/add_line_numbers.py \
-  add_line_numbers_results/inputs/text_files/my-project \
-  add_line_numbers_results/outputs/20251204001/line_numbered_files
-```
 
 ---
 
@@ -537,8 +500,7 @@ from pathlib import Path
 
 ## 10. 関連ドキュメント
 
-- [プログラム検証システム 仕様書](program_verification_spec_v1_6.md)
-- [README.md](../../README.md)
+- [README.md](README.md)
 
 ---
 
@@ -648,7 +610,7 @@ from pathlib import Path
 
 ### 13.2 試験実施記録
 
-試験実施時は以下の形式で記録し、`add_line_numbers_results/tests/` ディレクトリにマークダウンファイルとして保存する。
+試験実施時は以下の形式で記録する。
 
 **ファイル名形式**: `YYYYMMDD_HHMMSStest_result.md`
 
@@ -770,5 +732,7 @@ README.mdには以下の情報が含まれます：
 
 | バージョン | 日付 | 変更内容 | 作成者 |
 |-----------|------|----------|--------|
-| 1.6.3 | 2025-11-23 | 初版作成（Javaファイル専用） | 冨永善視 |
-| 1.7.0 | 2025-12-04 | テキストファイル全般対応に変更、テスト仕様（13章）を追加、エラーハンドリング仕様を追記（引数エラー、非UTF-8ファイル） | 冨永善視 |
+| 1.6.3 | 2025-11-23 | 初版作成（Javaファイル専用） | 株式会社エルブズ |
+| 1.7.0 | 2025-12-04 | テキストファイル全般対応に変更、テスト仕様（13章）を追加、エラーハンドリング仕様を追記（引数エラー、非UTF-8ファイル） | 株式会社エルブズ |
+| 1.7.1 | 2025-12-09 | 単独リポジトリとして公開用に整理 | 株式会社エルブズ |
+| 1.8.0 | 2025-12-09 | デフォルト入出力先をinputs/outputsに変更 | 株式会社エルブズ |
