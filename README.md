@@ -22,7 +22,7 @@ Python 3.8以上が必要です。外部依存ライブラリはありません�
 ## 使い方
 
 ```bash
-# デフォルト: src/ → analysis-input/
+# デフォルト: inputs/ → outputs/
 python add_line_numbers.py
 
 # カスタムディレクトリ指定
@@ -40,15 +40,15 @@ python add_line_numbers.py my_project numbered_output
 
 ```
 処理中: 64 個のファイル
-入力: src
-出力: analysis-input
+入力: inputs
+出力: outputs
 ------------------------------------------------------------
 ✓ main/java/com/example/App.java
 ✓ config/settings.json
 ✓ docs/README.md
 ------------------------------------------------------------
 完了: 64 個のファイルを処理しました
-✓ README.md を生成しました: analysis-input/README.md
+✓ README.md を生成しました: outputs/README.md
 ```
 
 ## 行番号の形式

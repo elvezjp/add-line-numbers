@@ -3,7 +3,7 @@
 テキストファイルに行番号を付けるシンプルなスクリプト
 
 使い方:
-    python add_line_numbers.py                    # src/ → analysis-input/ (デフォルト)
+    python add_line_numbers.py                    # inputs/ → outputs/ (デフォルト)
     python add_line_numbers.py input_dir output_dir  # カスタムディレクトリ指定
 """
 
@@ -288,9 +288,9 @@ def main():
     """メイン関数"""
     # コマンドライン引数の処理
     if len(sys.argv) == 1:
-        # デフォルト: src/ → analysis-input/
-        input_dir = "src"
-        output_dir = "analysis-input"
+        # デフォルト: inputs/ → outputs/
+        input_dir = "inputs"
+        output_dir = "outputs"
     elif len(sys.argv) == 3:
         # カスタムディレクトリ指定
         input_dir = sys.argv[1]
