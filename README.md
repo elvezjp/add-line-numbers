@@ -1,43 +1,55 @@
 # add-line-numbers
 
-テキストファイルに行番号を付与するPythonツールです。
+テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。コードレビューやAI解析で「〇行目を見て」と指し示しやすくなります。外部ライブラリ不要で、Python 3.8+ だけあれば動きます。
 
-## 概要
+## まずはクイックスタート
 
-AIによるコード解析やコードレビュー時に、行番号で特定の箇所を参照しやすくするためのツールです。
+1. リポジトリを取得して移動する
+   ```bash
+   git clone https://github.com/elvezjp/add-line-numbers.git
+   cd add-line-numbers
+   ```
+2. そのまま実行（`inputs/` → `outputs/`）
+   ```bash
+   python add_line_numbers.py
+   ```
+3. 結果を確認  
+   - 変換後のファイルが `outputs/` に生成されます  
+   - `outputs/README.md` が自動で作られ、構造と使い方がまとまります
 
-- テキストファイル（ソースコード、設定ファイル、ドキュメント等）に行番号を付与
-- ディレクトリ構造を保持した変換処理
-- 変換結果の説明ドキュメント（README.md）を自動生成
+## もう少し詳しく（初心者向け）
 
-## インストール
+- 何をするツール？
+  - テキストファイルの各行頭に行番号（例: `   1: `）を付けます
+  - 入力ディレクトリの構造を保ったまま出力にコピーします
+  - 出力先に説明用 README を自動生成します
 
-```bash
-git clone https://github.com/elvezjp/add-line-numbers.git
-cd add-line-numbers
-```
+- 対応するファイル
+  - UTF-8のテキストファイル全般（.py, .java, .js, .json, .xml, .md, .txt など）
+  - 画像などのバイナリやUTF-8で読めないファイルは自動スキップします
 
-Python 3.8以上が必要です。外部依存ライブラリはありません。
+- 必要なもの
+  - Python 3.8以上
+  - 追加のpipインストールは不要です
 
 ## 使い方
 
+### デフォルト（何も指定しない）
 ```bash
-# デフォルト: inputs/ → outputs/
 python add_line_numbers.py
-
-# カスタムディレクトリ指定
-python add_line_numbers.py <入力ディレクトリ> <出力ディレクトリ>
+# inputs/ を読み、outputs/ に書き出します
 ```
 
-### 例
-
+### 入出力を自分で指定する
 ```bash
-# my_project/ 内のファイルを numbered_output/ に出力
+python add_line_numbers.py <入力ディレクトリ> <出力ディレクトリ>
+```
+例:
+```bash
 python add_line_numbers.py my_project numbered_output
 ```
 
-### 出力例
-
+### 実行時の出力イメージ
 ```
 処理中: 64 個のファイル
 入力: inputs
@@ -51,11 +63,11 @@ python add_line_numbers.py my_project numbered_output
 ✓ README.md を生成しました: outputs/README.md
 ```
 
-## 行番号の形式
+## 行番号はこう付きます
 
-各行の先頭に4桁右揃えの行番号を付与します。
+- フォーマット: `   1: `（行番号は4桁右揃え＋コロン＋スペース）
 
-**変換前:**
+変換前:
 ```python
 def hello():
     print("Hello, World!")
@@ -64,7 +76,7 @@ if __name__ == "__main__":
     hello()
 ```
 
-**変換後:**
+変換後:
 ```
    1: def hello():
    2:     print("Hello, World!")
@@ -73,13 +85,19 @@ if __name__ == "__main__":
    5:     hello()
 ```
 
-## 対応ファイル
+## つまずきポイントとヒント
 
-- **対象**: UTF-8エンコーディングのテキストファイル全般（.py, .java, .js, .json, .xml, .md, .txt 等）
-- **非対応**: バイナリファイル、UTF-8以外のエンコーディング（自動スキップ）
+- 入力ディレクトリが存在しないとエラー終了します。パスを確認してください。
+- 非UTF-8やバイナリはスキップされます。必要なら事前にUTF-8へ変換してください。
+- 大量ファイルでは少し時間がかかります。出力ログで進捗を確認できます。
+
+## テストしたいとき
+```bash
+pip install pytest   # 未インストールなら
+pytest test.py -v
+```
 
 ## ファイル構成
-
 ```
 add-line-numbers/
 ├── add_line_numbers.py   # メインスクリプト
@@ -87,16 +105,6 @@ add-line-numbers/
 ├── spec.md               # 詳細仕様書
 ├── LICENSE               # MITライセンス
 └── README.md             # このファイル
-```
-
-## テスト
-
-```bash
-# pytestが必要です
-pip install pytest
-
-# テスト実行
-pytest test.py -v
 ```
 
 ## License
