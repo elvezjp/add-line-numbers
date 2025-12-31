@@ -13,6 +13,26 @@ from datetime import datetime
 from pathlib import Path
 
 
+def add_line_numbers_to_content(content: str) -> tuple[str, int]:
+    """
+    文字列に行番号を付与して返す
+
+    Args:
+        content: 行番号を付与する元のテキスト
+
+    Returns:
+        tuple: (行番号付きテキスト, 行数)
+    """
+    lines = content.splitlines()
+    line_count = len(lines)
+
+    numbered_lines = []
+    for i, line in enumerate(lines, 1):
+        numbered_lines.append(f"{i:4d}: {line}")
+
+    return "\n".join(numbered_lines), line_count
+
+
 def add_line_numbers_to_file(input_path: Path, output_path: Path) -> None:
     """
     テキストファイルに行番号を付けて出力する
