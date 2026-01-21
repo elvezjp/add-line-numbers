@@ -6,12 +6,6 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
 
-テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。
-
-テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。
-
-テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。
-
 テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。コードレビューやAI解析で「〇行目を見て」と指し示しやすくなります。外部ライブラリ不要で、Python 3.8+ だけあれば動きます。
 
 ## まずはクイックスタート
