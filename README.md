@@ -1,5 +1,10 @@
 # add-line-numbers
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-Cursor%20%7C%20Claude%20Code-brightgreen.svg)](https://github.com/elvezjp/add-line-numbers)
+[![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
+
 
 テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。コードレビューやAI解析で「〇行目を見て」と指し示しやすくなります。外部ライブラリ不要で、Python 3.8+ だけあれば動きます。
 
