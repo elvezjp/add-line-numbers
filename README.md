@@ -1,8 +1,3 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
-![Language](https://img.shields.io/badge/Language-JavaScript-yellow?style=flat-square)
-![Platform](https://img.shields.io/badge/Platform-Cursor%20%7C%20Claude%20Code-brightgreen?style=flat-square)
-
-
 # add-line-numbers
 
 
