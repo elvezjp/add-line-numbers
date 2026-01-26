@@ -109,11 +109,29 @@ pytest test.py -v
 add-line-numbers/
 ├── add_line_numbers.py   # メインスクリプト
 ├── test.py               # ユニットテスト
+├── pyproject.toml        # パッケージ設定
 ├── spec.md               # 詳細仕様書
+├── CONTRIBUTING.md       # 貢献ガイドライン
+├── CHANGELOG.md          # 変更履歴
+├── SECURITY.md           # セキュリティポリシー
 ├── LICENSE               # MITライセンス
-└── README.md             # このファイル
+├── README.md             # このファイル（英語版）
+└── README_ja.md          # 日本語版README
 ```
-### 開発の背景
+
+## セキュリティ
+
+セキュリティに関する問題や脆弱性の報告については、[SECURITY.md](SECURITY.md) を参照してください。
+
+## 貢献
+
+貢献を歓迎します！ガイドラインについては [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
+
+## 変更履歴
+
+バージョン履歴とリリースノートについては [CHANGELOG.md](CHANGELOG.md) を参照してください。
+
+## 開発の背景
 本ツールは、日本語の開発文書・仕様書を対象とした開発支援AI **IXV（イクシブ）** の開発過程で生まれた小さな実用品です。
 
 IXVでは、システム開発における日本語の文書について、理解・構造化・活用という課題に取り組んでおり、本リポジトリでは、その一部を切り出して公開しています。

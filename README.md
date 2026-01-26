@@ -109,11 +109,29 @@ pytest test.py -v
 add-line-numbers/
 ├── add_line_numbers.py   # main script
 ├── test.py               # unit tests
+├── pyproject.toml        # package configuration
 ├── spec.md               # detailed specification
+├── CONTRIBUTING.md       # contribution guidelines
+├── CHANGELOG.md          # version history
+├── SECURITY.md           # security policy
 ├── LICENSE               # MIT license
-└── README.md             # this file
+├── README.md             # this file (English)
+└── README_ja.md          # Japanese README
 ```
-### Background
+
+## Security
+
+For security issues and vulnerability reporting, see [SECURITY.md](SECURITY.md).
+
+## Contributing
+
+We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
+
+## Background
 This tool originated during the development of **IXV**, a development-support AI for Japanese technical documents and specifications.
 
 IXV focuses on understanding, structuring, and utilizing Japanese documents in system development. This repository publishes a small, practical piece of that effort.
