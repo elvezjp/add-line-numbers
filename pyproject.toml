@@ -1,13 +1,73 @@
 [project]
 name = "add-line-numbers"
 version = "0.1.1"
-description = "ファイルに行番号を追加するツール"
+description = "A lightweight tool that prefixes each line of text files with right-aligned line numbers."
+readme = "README.md"
 requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Elvez Inc.", email = "info@elvez.co.jp" },
+]
+maintainers = [
+    { name = "Elvez Inc.", email = "info@elvez.co.jp" },
+]
+keywords = [
+    "line-numbers",
+    "cli",
+    "text",
+    "formatting",
+    "code-review",
+    "ai",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+    "Topic :: Text Processing",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/elvezjp/add-line-numbers"
+Repository = "https://github.com/elvezjp/add-line-numbers"
+Issues = "https://github.com/elvezjp/add-line-numbers/issues"
+Changelog = "https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md"
+
+[project.scripts]
+add-line-numbers = "add_line_numbers:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "build>=1.0",
+    "twine>=4",
+]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["."]
-include = ["add_line_numbers.py"]
+only-include = ["add_line_numbers.py"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "add_line_numbers.py",
+    "README.md",
+    "README_ja.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "test.py",
+    "pyproject.toml",
+]
