@@ -132,9 +132,9 @@ We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
 
 ## Background
-This tool originated during the development of **IXV**, a development-support AI for Japanese technical documents and specifications.
+This tool originated during the development of **IXV**, an AI development ecosystem designed for Japanese engineering teams.
 
-IXV focuses on understanding, structuring, and utilizing Japanese documents in system development. This repository publishes a small, practical piece of that effort.
+IXV delivers a methodology and OSS that put AI to practical use in real development workflows. This repository publishes a small, practical piece of that effort.
 
 ## License
 
