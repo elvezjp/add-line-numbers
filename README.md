@@ -7,6 +7,8 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
 
+![Example: adding line numbers to a source file](docs/assets/example.png)
+
 A Python script that automatically adds 4-digit right-aligned line numbers to text files. It makes code reviews and AI analysis easier by letting you point to “line X.” No external libraries required—just Python 3.9+.
 
 ## Quick Start
@@ -91,6 +93,8 @@ After:
    4: if __name__ == "__main__":
    5:     hello()
 ```
+
+For a full example, see [docs/examples/](docs/examples/) — the script run against [add_line_numbers.py](add_line_numbers.py) itself, including the auto-generated [README.md](docs/examples/README.md).
 
 ## Tips and Gotchas
 
