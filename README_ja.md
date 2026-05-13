@@ -92,6 +92,8 @@ if __name__ == "__main__":
    5:     hello()
 ```
 
+実際の出力例は [docs/examples/](docs/examples/) を参照してください。[add_line_numbers.py](add_line_numbers.py) 自身に対してスクリプトを実行した結果と、自動生成された [README.md](docs/examples/README.md) が確認できます。
+
 ## つまずきポイントとヒント
 
 - 入力ディレクトリが存在しないとエラー終了します。パスを確認してください。

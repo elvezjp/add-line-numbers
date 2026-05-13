@@ -92,6 +92,8 @@ After:
    5:     hello()
 ```
 
+For a full example, see [docs/examples/](docs/examples/) — the script run against [add_line_numbers.py](add_line_numbers.py) itself, including the auto-generated [README.md](docs/examples/README.md).
+
 ## Tips and Gotchas
 
 - If the input directory does not exist, the script exits with an error. Double-check the path.
