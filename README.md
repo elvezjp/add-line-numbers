@@ -4,12 +4,12 @@
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
 
 ![Example: adding line numbers to a source file](https://raw.githubusercontent.com/elvezjp/add-line-numbers/main/docs/assets/example.png)
 
-A Python script that automatically adds 4-digit right-aligned line numbers to text files. It makes code reviews and AI analysis easier by letting you point to “line X.” No external libraries required—just Python 3.9+.
+A Python script that automatically adds 4-digit right-aligned line numbers to text files. It makes code reviews and AI analysis easier by letting you point to “line X.” No external libraries required—just Python 3.11+.
 
 ## Quick Start
 
@@ -38,7 +38,7 @@ A Python script that automatically adds 4-digit right-aligned line numbers to te
   - Binary files or non-UTF-8 files are automatically skipped
 
 - Requirements
-  - Python 3.9 or later
+  - Python 3.11 or later
   - No extra pip installs needed
 
 ## Usage

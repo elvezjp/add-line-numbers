@@ -5,6 +5,13 @@
 フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づき、
 バージョン管理は [セマンティックバージョニング](https://semver.org/lang/ja/) に準拠しています。
 
+## [Unreleased]
+
+### 変更
+- 最小サポート Python バージョンを 3.9 から 3.11 に引き上げ
+  - 開発依存（pytest 9.x）が Python 3.10 以上を要求し、3.9 環境では脆弱な
+    pytest 8.x に固定されるため、サポート対象を整理
+
 ## [0.1.1] - 2026-03-11
 
 ### 変更
