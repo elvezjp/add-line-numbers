@@ -1,5 +1,5 @@
 # add-line-numbers
-[English](./README.md) | [日本語](./README_ja.md)
+[English](https://github.com/elvezjp/add-line-numbers/blob/main/README.md) | [日本語](https://github.com/elvezjp/add-line-numbers/blob/main/README_ja.md)
 
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
@@ -7,7 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
 
-![ソースファイルに行番号を付与する例](docs/assets/example.png)
+![ソースファイルに行番号を付与する例](https://raw.githubusercontent.com/elvezjp/add-line-numbers/main/docs/assets/example.png)
 
 テキストファイルに「4桁右揃えの行番号」を自動で付けるPythonスクリプトです。コードレビューやAI解析で「〇行目を見て」と指し示しやすくなります。外部ライブラリ不要で、Python 3.9+ だけあれば動きます。
 
@@ -94,7 +94,7 @@ if __name__ == "__main__":
    5:     hello()
 ```
 
-実際の出力例は [docs/examples/](docs/examples/) を参照してください。[add_line_numbers.py](add_line_numbers.py) 自身に対してスクリプトを実行した結果と、自動生成された [README.md](docs/examples/README.md) が確認できます。
+実際の出力例は [docs/examples/](https://github.com/elvezjp/add-line-numbers/tree/main/docs/examples) を参照してください。[add_line_numbers.py](https://github.com/elvezjp/add-line-numbers/blob/main/add_line_numbers.py) 自身に対してスクリプトを実行した結果と、自動生成された [README.md](https://github.com/elvezjp/add-line-numbers/blob/main/docs/examples/README.md) が確認できます。
 
 ## つまずきポイントとヒント
 
@@ -125,15 +125,15 @@ add-line-numbers/
 
 ## セキュリティ
 
-セキュリティに関する問題や脆弱性の報告については、[SECURITY.md](SECURITY.md) を参照してください。
+セキュリティに関する問題や脆弱性の報告については、[SECURITY.md](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY.md) を参照してください。
 
 ## 貢献
 
-貢献を歓迎します！ガイドラインについては [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
+貢献を歓迎します！ガイドラインについては [CONTRIBUTING.md](https://github.com/elvezjp/add-line-numbers/blob/main/CONTRIBUTING.md) を参照してください。
 
 ## 変更履歴
 
-バージョン履歴とリリースノートについては [CHANGELOG.md](CHANGELOG.md) を参照してください。
+バージョン履歴とリリースノートについては [CHANGELOG.md](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md) を参照してください。
 
 ## 開発の背景
 本ツールは、日本の開発現場でAIを活かすためのAI開発エコシステム **IXV（イクシブ）** の開発過程で生まれた小さな実用品です。
@@ -142,7 +142,7 @@ IXVでは、開発方法論とOSSを提供することで、AI活用を現場に
 
 ## ライセンス
 
-MIT License - 詳細は [LICENSE](LICENSE) を参照してください。
+MIT License - 詳細は [LICENSE](https://github.com/elvezjp/add-line-numbers/blob/main/LICENSE) を参照してください。
 
 ## 問い合わせ先
 
