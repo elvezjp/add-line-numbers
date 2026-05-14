@@ -1,5 +1,5 @@
 # add-line-numbers
-[English](./README.md) | [日本語](./README_ja.md)
+[English](https://github.com/elvezjp/add-line-numbers/blob/main/README.md) | [日本語](https://github.com/elvezjp/add-line-numbers/blob/main/README_ja.md)
 
 [![Elvez](https://img.shields.io/badge/Elvez-Product-3F61A7?style=flat-square)](https://elvez.co.jp/)
 [![IXV Ecosystem](https://img.shields.io/badge/IXV-Ecosystem-3F61A7?style=flat-square)](https://elvez.co.jp/ixv/)
@@ -7,7 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Stars](https://img.shields.io/github/stars/elvezjp/add-line-numbers?style=social)](https://github.com/elvezjp/add-line-numbers/stargazers)
 
-![Example: adding line numbers to a source file](docs/assets/example.png)
+![Example: adding line numbers to a source file](https://raw.githubusercontent.com/elvezjp/add-line-numbers/main/docs/assets/example.png)
 
 A Python script that automatically adds 4-digit right-aligned line numbers to text files. It makes code reviews and AI analysis easier by letting you point to “line X.” No external libraries required—just Python 3.9+.
 
@@ -94,7 +94,7 @@ After:
    5:     hello()
 ```
 
-For a full example, see [docs/examples/](docs/examples/) — the script run against [add_line_numbers.py](add_line_numbers.py) itself, including the auto-generated [README.md](docs/examples/README.md).
+For a full example, see [docs/examples/](https://github.com/elvezjp/add-line-numbers/tree/main/docs/examples) — the script run against [add_line_numbers.py](https://github.com/elvezjp/add-line-numbers/blob/main/add_line_numbers.py) itself, including the auto-generated [README.md](https://github.com/elvezjp/add-line-numbers/blob/main/docs/examples/README.md).
 
 ## Tips and Gotchas
 
@@ -125,15 +125,15 @@ add-line-numbers/
 
 ## Security
 
-For security issues and vulnerability reporting, see [SECURITY.md](SECURITY.md).
+For security issues and vulnerability reporting, see [SECURITY.md](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY.md).
 
 ## Contributing
 
-We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please read [CONTRIBUTING.md](https://github.com/elvezjp/add-line-numbers/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
+See [CHANGELOG.md](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md) for version history and release notes.
 
 ## Background
 This tool originated during the development of **IXV**, an AI development ecosystem designed for Japanese engineering teams.
@@ -142,7 +142,7 @@ IXV delivers a methodology and OSS that put AI to practical use in real developm
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/elvezjp/add-line-numbers/blob/main/LICENSE) for details.
 
 ## Contact
 

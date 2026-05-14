@@ -1,0 +1,66 @@
+name: Publish to TestPyPI
+
+# 手動トリガー (workflow_dispatch) で TestPyPI にビルド成果物を上げる
+# リハーサル用 workflow。本番 PyPI 公開の前に、別環境で
+# `pip install --index-url https://test.pypi.org/simple/ add-line-numbers` を
+# 検証してから publish.yml を回すのが推奨フロー。
+#
+# 事前準備 (管理者作業、PR 本体には含まれない):
+#   1. TestPyPI 側 (https://test.pypi.org/) で elvezjp/add-line-numbers と本 workflow を
+#      Trusted Publisher として登録
+#   2. GitHub リポ Settings → Environments → "testpypi" を作成
+#
+# 注意: TestPyPI は同じバージョン番号での再アップロードを許さないため、
+# リハーサルを繰り返す場合は pyproject.toml の version を
+# X.Y.Z.dev0 → X.Y.Z.dev1 → ... のように rc / dev サフィックスで
+# 進める運用が無難。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest build
+      - name: Run tests
+        run: pytest test.py -v
+      - name: Build sdist and wheel
+        run: python -m build
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  publish-testpypi:
+    name: Publish to TestPyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/add-line-numbers
+    permissions:
+      id-token: write  # Trusted Publisher (OIDC) のために必要
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
