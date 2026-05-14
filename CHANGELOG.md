@@ -5,12 +5,20 @@
 フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づき、
 バージョン管理は [セマンティックバージョニング](https://semver.org/lang/ja/) に準拠しています。
 
-## [Unreleased]
+## [0.1.2] - 2026-05-14
+
+### 追加
+- PyPI / TestPyPI 公開用 GitHub Actions ワークフローを追加
+  - `publish.yml`: tag `v*` の push をトリガーに PyPI へ公開（Trusted Publisher / OIDC）
+  - `publish-testpypi.yml`: `workflow_dispatch` 手動起動で TestPyPI へ公開
 
 ### 変更
 - 最小サポート Python バージョンを 3.9 から 3.11 に引き上げ
   - 開発依存（pytest 9.x）が Python 3.10 以上を要求し、3.9 環境では脆弱な
     pytest 8.x に固定されるため、サポート対象を整理
+- README.md / README_ja.md の内部リンクと画像参照を `github.com` /
+  `raw.githubusercontent.com` の絶対 URL に変更
+  - PyPI のプロジェクト説明ページでは相対リンクがレンダリングされないため
 
 ## [0.1.1] - 2026-03-11
 
@@ -45,5 +53,6 @@
 
 | バージョン | 主な機能 |
 |------------|------------|
+| 0.1.2      | PyPI 公開対応、最小 Python バージョンを 3.11 に引き上げ |
 | 0.1.1      | 最小 Python バージョンを 3.9 に引き上げ |
 | 0.1.0      | 基本機能公開 |

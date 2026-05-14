@@ -1,6 +1,6 @@
 [project]
 name = "add-line-numbers"
-version = "0.1.1"
+version = "0.1.2"
 description = "A lightweight tool that prefixes each line of text files with right-aligned line numbers."
 readme = "README.md"
 requires-python = ">=3.11"
