@@ -1,0 +1,59 @@
+# 変更履歴
+[English](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md) | [日本語](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG_ja.md)
+
+このプロジェクトのすべての重要な変更を記録します。
+
+フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づき、
+バージョン管理は [セマンティックバージョニング](https://semver.org/lang/ja/) に準拠しています。
+
+## [0.1.2] - 2026-05-14
+
+### 追加
+- PyPI / TestPyPI 公開用 GitHub Actions ワークフローを追加
+  - `publish.yml`: tag `v*` の push をトリガーに PyPI へ公開（Trusted Publisher / OIDC）
+  - `publish-testpypi.yml`: `workflow_dispatch` 手動起動で TestPyPI へ公開
+
+### 変更
+- 最小サポート Python バージョンを 3.9 から 3.11 に引き上げ
+  - 開発依存（pytest 9.x）が Python 3.10 以上を要求し、3.9 環境では脆弱な
+    pytest 8.x に固定されるため、サポート対象を整理
+- README.md / README_ja.md の内部リンクと画像参照を `github.com` /
+  `raw.githubusercontent.com` の絶対 URL に変更
+  - PyPI のプロジェクト説明ページでは相対リンクがレンダリングされないため
+
+## [0.1.1] - 2026-03-11
+
+### 変更
+- 最小サポート Python バージョンを 3.8 から 3.9 に引き上げ
+  - 組み込み型の添字型ヒント（PEP 585）を使用するため 3.9 以上が必要
+
+## [0.1.0] - 2025-01-25
+
+### 追加
+- テキストファイルに4桁右寄せの行番号を自動付与する機能
+- 入力ディレクトリの構造を保持したまま出力ディレクトリにコピーする機能
+- 出力ディレクトリに自動生成READMEを作成する機能
+- UTF-8テキストファイル（.py, .java, .js, .json, .xml, .md, .txtなど）のサポート
+- バイナリファイル・非UTF-8ファイルの自動スキップ機能
+- コマンドライン引数による入力・出力ディレクトリの指定機能
+- 文字列を直接処理する `add_line_numbers_to_content()` 関数
+- pytestによるユニットテスト
+- pyproject.tomlによるパッケージインストール対応
+
+### 技術詳細
+- Python 3.9以上で動作
+- 外部ライブラリに依存しない（標準ライブラリのみ使用）
+- 行番号フォーマット: `   1: `（4桁右寄せ + コロン + スペース）
+
+## リンク
+
+- [リポジトリ](https://github.com/elvezjp/add-line-numbers)
+- [Issueトラッカー](https://github.com/elvezjp/add-line-numbers/issues)
+
+## バージョン比較
+
+| バージョン | 主な機能 |
+|------------|------------|
+| 0.1.2      | PyPI 公開対応、最小 Python バージョンを 3.11 に引き上げ |
+| 0.1.1      | 最小 Python バージョンを 3.9 に引き上げ |
+| 0.1.0      | 基本機能公開 |

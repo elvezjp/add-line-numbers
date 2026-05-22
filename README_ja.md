@@ -115,9 +115,9 @@ add-line-numbers/
 ├── test.py               # ユニットテスト
 ├── pyproject.toml        # パッケージ設定
 ├── spec.md               # 詳細仕様書
-├── CONTRIBUTING.md       # 貢献ガイドライン
-├── CHANGELOG.md          # 変更履歴
-├── SECURITY.md           # セキュリティポリシー
+├── CONTRIBUTING.md / CONTRIBUTING_ja.md  # 貢献ガイドライン（英語 / 日本語）
+├── CHANGELOG.md / CHANGELOG_ja.md        # 変更履歴（英語 / 日本語）
+├── SECURITY.md / SECURITY_ja.md          # セキュリティポリシー（英語 / 日本語）
 ├── LICENSE               # MITライセンス
 ├── README.md             # このファイル（英語版）
 └── README_ja.md          # 日本語版README
@@ -125,15 +125,15 @@ add-line-numbers/
 
 ## セキュリティ
 
-セキュリティに関する問題や脆弱性の報告については、[SECURITY.md](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY.md) を参照してください。
+セキュリティに関する問題や脆弱性の報告については、[SECURITY_ja.md](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY_ja.md) を参照してください。
 
 ## 貢献
 
-貢献を歓迎します！ガイドラインについては [CONTRIBUTING.md](https://github.com/elvezjp/add-line-numbers/blob/main/CONTRIBUTING.md) を参照してください。
+貢献を歓迎します！ガイドラインについては [CONTRIBUTING_ja.md](https://github.com/elvezjp/add-line-numbers/blob/main/CONTRIBUTING_ja.md) を参照してください。
 
 ## 変更履歴
 
-バージョン履歴とリリースノートについては [CHANGELOG.md](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md) を参照してください。
+バージョン履歴とリリースノートについては [CHANGELOG_ja.md](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG_ja.md) を参照してください。
 
 ## 開発の背景
 本ツールは、日本の開発現場でAIを活かすためのAI開発エコシステム **IXV（イクシブ）** の開発過程で生まれた小さな実用品です。

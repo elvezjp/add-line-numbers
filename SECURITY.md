@@ -1,145 +1,146 @@
-# セキュリティポリシー
+# Security Policy
+[English](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY.md) | [日本語](https://github.com/elvezjp/add-line-numbers/blob/main/SECURITY_ja.md)
 
-## サポートバージョン
+## Supported Versions
 
-セキュリティサポート対象のバージョンは以下の通りです。常に最新バージョンの使用を推奨します。
+The following versions receive security support. We strongly recommend using the latest version.
 
-| バージョン | サポート状況       |
-| ---------- | ------------------ |
-| 0.1.2      | :white_check_mark: |
-| < 0.1.2    | :x:                |
+| Version | Supported          |
+| ------- | ------------------ |
+| 0.1.2   | :white_check_mark: |
+| < 0.1.2 | :x:                |
 
-## 脆弱性の報告
+## Reporting a Vulnerability
 
-add-line-numbers にセキュリティ上の脆弱性を発見した場合は、以下の手順に従って責任ある報告をお願いします：
+If you discover a security vulnerability in add-line-numbers, please follow the responsible disclosure process below.
 
-### 報告方法
+### How to Report
 
-1. セキュリティ脆弱性に関して公開の GitHub Issue を作成**しないでください**
-2. 以下の方法でメンテナーに詳細なレポートを送信してください：
-   - GitHub のプライベートセキュリティアドバイザリを作成する（推奨）
-   - メールで報告（README の問い合わせ先を参照）
+1. **Do not** open a public GitHub Issue for security vulnerabilities
+2. Send a detailed report to the maintainers via either of the following channels:
+   - Open a private GitHub Security Advisory (recommended)
+   - Email (see the contact information in the README)
 
-### 報告に含める内容
+### What to Include
 
-レポートには以下の情報を含めてください：
+Please include the following information in your report:
 
-- 脆弱性の説明
-- 問題を再現する手順
-- 潜在的な影響と重大度
-- 修正案や緩和策の提案（可能であれば）
-- 連絡先情報（任意）
+- A description of the vulnerability
+- Steps to reproduce the problem
+- Potential impact and severity
+- Suggested fix or mitigation (if any)
+- Contact information (optional)
 
-### 報告例
+### Example Report
 
 ```
-件名: [SECURITY] ファイル処理時の潜在的な脆弱性
+Subject: [SECURITY] Potential vulnerability during file processing
 
-説明:
-特定の条件下でファイル処理時に予期しない動作が発生する可能性があります。
+Description:
+Under certain conditions, unexpected behavior may occur during file processing.
 
-再現手順:
-1. 特定の形式のファイルを inputs/ ディレクトリに配置
-2. python add_line_numbers.py を実行
-3. 出力を確認
+Steps to reproduce:
+1. Place a file of a specific format in the inputs/ directory
+2. Run python add_line_numbers.py
+3. Observe the output
 
-影響:
-予期しないファイル内容が出力される可能性があります。
+Impact:
+Output files may contain unexpected content.
 
-修正案:
-入力ファイルの検証を強化する。
+Suggested fix:
+Strengthen input file validation.
 ```
 
-## 対応スケジュール
+## Response Timeline
 
-- **初回応答**: 48時間以内
-- **状況更新**: 7日以内
-- **解決**: 重大度に応じて
-  - 緊急: 14日以内
-  - 高: 30日以内
-  - 中: 60日以内
-  - 低: 次回リリースサイクル
+- **Initial response**: within 48 hours
+- **Status updates**: within 7 days
+- **Resolution**: depends on severity
+  - Critical: within 14 days
+  - High: within 30 days
+  - Medium: within 60 days
+  - Low: in the next release cycle
 
-## セキュリティに関する考慮事項
+## Security Considerations
 
-### ファイル処理
+### File Processing
 
-add-line-numbers はテキストファイルを処理するツールです：
+add-line-numbers is a tool that processes text files:
 
-- UTF-8 テキストファイル（.py, .java, .js, .json, .xml, .md, .txt など）
-- 入力ディレクトリから出力ディレクトリへファイルをコピー
+- UTF-8 text files (.py, .java, .js, .json, .xml, .md, .txt, and more)
+- Copies files from an input directory to an output directory
 
-**推奨事項:**
+**Recommendations:**
 
-1. 信頼できるソースからのファイルのみを処理する
-2. 出力ディレクトリに機密ファイルが含まれていないことを確認する
-3. 共有する前に出力ファイルの内容を確認する
+1. Only process files from trusted sources
+2. Make sure the output directory does not contain sensitive files
+3. Review the contents of output files before sharing them
 
-### 入力検証
+### Input Validation
 
-add-line-numbers には以下のセキュリティ対策が含まれています：
+add-line-numbers includes the following security-related behaviors:
 
-- UTF-8 以外のファイルは自動的にスキップ
-- バイナリファイルは自動的にスキップ
-- 存在しない入力ディレクトリはエラーで終了
+- Non-UTF-8 files are automatically skipped
+- Binary files are automatically skipped
+- A non-existent input directory causes the program to exit with an error
 
-### 出力のセキュリティ
+### Output Security
 
-生成されたファイルを使用する際の注意点：
+When using generated files, be aware of the following:
 
-- 出力ファイルには入力ファイルの内容がそのまま含まれます（行番号が追加されるのみ）
-- 機密情報を含むファイルを処理した場合、出力にも機密情報が含まれます
-- 出力を共有する前に内容を確認してください
+- Output files contain the original file contents as-is (only line numbers are added)
+- If you process a file containing sensitive information, that information will appear in the output
+- Review the output before sharing it
 
-### 依存関係
+### Dependencies
 
-このプロジェクトは外部ライブラリに依存していません：
+This project has no external library dependencies:
 
-- Python 3.11+ の標準ライブラリのみを使用
-- pip install は不要
-- 外部依存関係がないため、サプライチェーン攻撃のリスクが低減されています
+- Uses only the Python 3.11+ standard library
+- No `pip install` required
+- The lack of external dependencies reduces supply chain attack risk
 
-### Dependabot アラートの運用方針
+### Dependabot Alert Policy
 
-このプロジェクトは外部 Python ライブラリに依存していませんが、GitHub Actions ワークフローに対して Dependabot アラートが発生する場合があります。以下の方針で運用します。
+While this project has no external Python library dependencies, Dependabot alerts may still occur against GitHub Actions workflows. The policy is as follows.
 
-**Malware タブ**: 発生場所を問わず必ず修正対応する
+**Malware tab**: always fix, regardless of where it appears.
 
-**Vulnerable**: 以下の表に従う
+**Vulnerable**: follow the table below.
 
-| 対象 | 対応 |
-|------|------|
-| 最新バージョン | **修正対応**（依存更新／PR 作成）。依存パッケージのバージョン更新のみで対応できる場合、本体バージョンは変更しない |
+| Target | Action |
+|--------|--------|
+| Latest version | **Fix** (update dependency / open PR). When a fix can be made via dependency version updates only, the project version itself is not changed |
 
-## セキュリティのベストプラクティス
+## Security Best Practices
 
-add-line-numbers を使用する際の推奨事項：
+When using add-line-numbers, we recommend the following:
 
-1. **最新版を維持**: 常に最新バージョンを使用する
-2. **入力を確認**: 処理前にファイルを検査する
-3. **サンドボックス処理**: 信頼できないファイルを処理する場合は、隔離された環境（コンテナや VM）で実行する
-4. **出力を検証**: 使用前に生成されたファイルを確認する
-5. **権限を制限**: 必要最小限の権限で実行する
+1. **Stay up to date**: always use the latest version
+2. **Inspect inputs**: examine files before processing them
+3. **Sandbox**: run on isolated environments (containers or VMs) when processing untrusted files
+4. **Validate outputs**: review generated files before using them
+5. **Limit privileges**: run with the minimum permissions required
 
-## 既知のセキュリティ制限
+## Known Security Limitations
 
-1. **ファイルサイズ**: 非常に大きなファイルはメモリの問題を引き起こす可能性があります
-2. **エンコーディング**: UTF-8 以外のファイルは処理されません
+1. **File size**: extremely large files may cause memory issues
+2. **Encoding**: non-UTF-8 files are not processed
 
-## セキュリティアップデート
+## Security Updates
 
-セキュリティアップデートは以下の形式でリリースされます：
+Security updates are released as follows:
 
-- 軽微な問題にはパッチバージョン（例: 0.1.1）
-- 重大な問題にはマイナーバージョン（例: 0.2.0）
+- Minor issues: patch version (e.g., 0.1.1)
+- Serious issues: minor version (e.g., 0.2.0)
 
-## 謝辞
+## Acknowledgments
 
-脆弱性を責任を持って報告してくださるセキュリティ研究者に感謝します。
+We thank the security researchers who responsibly disclose vulnerabilities.
 
-## ご質問
+## Questions
 
-脆弱性ではないセキュリティ関連のご質問は、以下の方法でお問い合わせください：
+For security-related questions that are not vulnerabilities, please contact us via:
 
-- 「security」ラベルを付けて Issue を作成
-- README の問い合わせ先まで
+- Open an Issue with the `security` label
+- See the contact information in the README
