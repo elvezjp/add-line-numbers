@@ -115,12 +115,9 @@ add-line-numbers/
 ├── test.py               # ユニットテスト
 ├── pyproject.toml        # パッケージ設定
 ├── spec.md               # 詳細仕様書
-├── CONTRIBUTING.md       # 貢献ガイドライン（英語）
-├── CONTRIBUTING_ja.md    # 貢献ガイドライン（日本語）
-├── CHANGELOG.md          # 変更履歴（英語）
-├── CHANGELOG_ja.md       # 変更履歴（日本語）
-├── SECURITY.md           # セキュリティポリシー（英語）
-├── SECURITY_ja.md        # セキュリティポリシー（日本語）
+├── CONTRIBUTING.md / CONTRIBUTING_ja.md  # 貢献ガイドライン（英語 / 日本語）
+├── CHANGELOG.md / CHANGELOG_ja.md        # 変更履歴（英語 / 日本語）
+├── SECURITY.md / SECURITY_ja.md          # セキュリティポリシー（英語 / 日本語）
 ├── LICENSE               # MITライセンス
 ├── README.md             # このファイル（英語版）
 └── README_ja.md          # 日本語版README
