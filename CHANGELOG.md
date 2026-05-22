@@ -1,58 +1,60 @@
-# 変更履歴
+# Changelog
+[English](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG.md) | [日本語](https://github.com/elvezjp/add-line-numbers/blob/main/CHANGELOG_ja.md)
 
-このプロジェクトのすべての重要な変更を記録します。
+All notable changes to this project are documented in this file.
 
-フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づき、
-バージョン管理は [セマンティックバージョニング](https://semver.org/lang/ja/) に準拠しています。
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.1.2] - 2026-05-14
 
-### 追加
-- PyPI / TestPyPI 公開用 GitHub Actions ワークフローを追加
-  - `publish.yml`: tag `v*` の push をトリガーに PyPI へ公開（Trusted Publisher / OIDC）
-  - `publish-testpypi.yml`: `workflow_dispatch` 手動起動で TestPyPI へ公開
+### Added
+- GitHub Actions workflows for publishing to PyPI / TestPyPI
+  - `publish.yml`: publishes to PyPI when a `v*` tag is pushed (Trusted Publisher / OIDC)
+  - `publish-testpypi.yml`: publishes to TestPyPI via manual `workflow_dispatch`
 
-### 変更
-- 最小サポート Python バージョンを 3.9 から 3.11 に引き上げ
-  - 開発依存（pytest 9.x）が Python 3.10 以上を要求し、3.9 環境では脆弱な
-    pytest 8.x に固定されるため、サポート対象を整理
-- README.md / README_ja.md の内部リンクと画像参照を `github.com` /
-  `raw.githubusercontent.com` の絶対 URL に変更
-  - PyPI のプロジェクト説明ページでは相対リンクがレンダリングされないため
+### Changed
+- Raised the minimum supported Python version from 3.9 to 3.11
+  - Development dependencies (pytest 9.x) require Python 3.10+, and pinning to
+    the vulnerable pytest 8.x line on 3.9 was undesirable, so the supported
+    range was tightened
+- Switched internal links and image references in README.md / README_ja.md to
+  absolute URLs under `github.com` / `raw.githubusercontent.com`
+  - Relative links are not rendered on the PyPI project description page
 
 ## [0.1.1] - 2026-03-11
 
-### 変更
-- 最小サポート Python バージョンを 3.8 から 3.9 に引き上げ
-  - 組み込み型の添字型ヒント（PEP 585）を使用するため 3.9 以上が必要
+### Changed
+- Raised the minimum supported Python version from 3.8 to 3.9
+  - Built-in subscripted type hints (PEP 585) require Python 3.9+
 
 ## [0.1.0] - 2025-01-25
 
-### 追加
-- テキストファイルに4桁右寄せの行番号を自動付与する機能
-- 入力ディレクトリの構造を保持したまま出力ディレクトリにコピーする機能
-- 出力ディレクトリに自動生成READMEを作成する機能
-- UTF-8テキストファイル（.py, .java, .js, .json, .xml, .md, .txtなど）のサポート
-- バイナリファイル・非UTF-8ファイルの自動スキップ機能
-- コマンドライン引数による入力・出力ディレクトリの指定機能
-- 文字列を直接処理する `add_line_numbers_to_content()` 関数
-- pytestによるユニットテスト
-- pyproject.tomlによるパッケージインストール対応
+### Added
+- Automatic 4-digit right-aligned line numbering for text files
+- Preserves the input directory structure when copying to the output directory
+- Auto-generated README in the output directory
+- Support for UTF-8 text files (.py, .java, .js, .json, .xml, .md, .txt, and more)
+- Automatic skip for binary files and non-UTF-8 files
+- Command-line arguments for input and output directories
+- `add_line_numbers_to_content()` function for processing strings directly
+- Unit tests with pytest
+- Package install support via pyproject.toml
 
-### 技術詳細
-- Python 3.9以上で動作
-- 外部ライブラリに依存しない（標準ライブラリのみ使用）
-- 行番号フォーマット: `   1: `（4桁右寄せ + コロン + スペース）
+### Technical Details
+- Runs on Python 3.9 or later
+- No external dependencies (standard library only)
+- Line number format: `   1: ` (4-digit right-aligned + colon + space)
 
-## リンク
+## Links
 
-- [リポジトリ](https://github.com/elvezjp/add-line-numbers)
-- [Issueトラッカー](https://github.com/elvezjp/add-line-numbers/issues)
+- [Repository](https://github.com/elvezjp/add-line-numbers)
+- [Issue Tracker](https://github.com/elvezjp/add-line-numbers/issues)
 
-## バージョン比較
+## Version Comparison
 
-| バージョン | 主な機能 |
-|------------|------------|
-| 0.1.2      | PyPI 公開対応、最小 Python バージョンを 3.11 に引き上げ |
-| 0.1.1      | 最小 Python バージョンを 3.9 に引き上げ |
-| 0.1.0      | 基本機能公開 |
+| Version | Highlights |
+|---------|------------|
+| 0.1.2   | PyPI publishing support; minimum Python raised to 3.11 |
+| 0.1.1   | Minimum Python raised to 3.9 |
+| 0.1.0   | Initial public release |

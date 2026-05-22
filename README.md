@@ -115,9 +115,12 @@ add-line-numbers/
 ├── test.py               # unit tests
 ├── pyproject.toml        # package configuration
 ├── spec.md               # detailed specification
-├── CONTRIBUTING.md       # contribution guidelines
-├── CHANGELOG.md          # version history
-├── SECURITY.md           # security policy
+├── CONTRIBUTING.md       # contribution guidelines (English)
+├── CONTRIBUTING_ja.md    # contribution guidelines (Japanese)
+├── CHANGELOG.md          # version history (English)
+├── CHANGELOG_ja.md       # version history (Japanese)
+├── SECURITY.md           # security policy (English)
+├── SECURITY_ja.md        # security policy (Japanese)
 ├── LICENSE               # MIT license
 ├── README.md             # this file (English)
 └── README_ja.md          # Japanese README
