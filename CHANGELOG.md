@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-08-09
+
 ### Security
 - Raised the floor of the transitive development dependency `cryptography` to
   `>= 48.0.1` to address [GHSA-537c-gmf6-5ccf](https://github.com/pyca/cryptography/security/advisories/GHSA-537c-gmf6-5ccf)
@@ -15,6 +17,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - Added a `[tool.uv]` `constraint-dependencies` entry in `pyproject.toml`
   - Regenerated `uv.lock` (`cryptography` 48.0.0 → 49.0.0)
   - The runtime is unaffected: `cryptography` is only pulled in via `twine` (dev) on Linux
+
+### Changed
+- **Publishing is now triggered manually only**: `publish.yml` no longer runs on a
+  `v*` tag push; it is started from Actions via `workflow_dispatch` with a
+  `target` input (`testpypi` / `pypi`)
+  - Tags are used as a record of a release and as a stable reference for
+    downstream repositories, so pushing one must not publish to PyPI on its own
+  - Merged `publish-testpypi.yml` into `publish.yml` and removed the former file;
+    the TestPyPI rehearsal is now the `target: testpypi` run of the same workflow
+  - The pre-publish test gate is preserved: the `build` job runs `pytest` before
+    building the distributions
 
 ## [0.1.2] - 2026-05-14
 
@@ -65,6 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 | Version | Highlights |
 |---------|------------|
+| 0.1.3   | Publishing switched to manual runs; `cryptography` floor raised (dev) |
 | 0.1.2   | PyPI publishing support; minimum Python raised to 3.11 |
 | 0.1.1   | Minimum Python raised to 3.9 |
 | 0.1.0   | Initial public release |

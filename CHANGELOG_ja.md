@@ -8,6 +8,8 @@
 
 ## [未リリース]
 
+## [0.1.3] - 2026-08-09
+
 ### セキュリティ
 - 推移的な開発依存パッケージ `cryptography` の下限を `>= 48.0.1` に引き上げ、
   [GHSA-537c-gmf6-5ccf](https://github.com/pyca/cryptography/security/advisories/GHSA-537c-gmf6-5ccf)
@@ -15,6 +17,15 @@
   - `pyproject.toml` に `[tool.uv]` の `constraint-dependencies` を追加
   - `uv.lock` を再生成（`cryptography` 48.0.0 → 49.0.0）
   - ランタイムには影響なし: `cryptography` は Linux 上で `twine`（開発依存）経由でのみ導入される
+
+### 変更
+- **PyPI 公開を手動実行のみに変更**: `publish.yml` の tag `v*` push トリガーを廃止し、
+  Actions から `workflow_dispatch` で `target`（`testpypi` / `pypi`）を選んで起動する方式に変更
+  - タグはリリースの記録であり、依存元リポジトリからの参照を固定する用途でも打つため、
+    タグ push だけで PyPI 公開が走らないようにした
+  - `publish-testpypi.yml` を `publish.yml` に統合し、旧ファイルを削除。
+    TestPyPI へのリハーサルは同 workflow の `target: testpypi` 実行に相当する
+  - 公開前のテスト必須化は維持: `build` ジョブが配布物のビルド前に `pytest` を実行する
 
 ## [0.1.2] - 2026-05-14
 
@@ -64,6 +75,7 @@
 
 | バージョン | 主な機能 |
 |------------|------------|
+| 0.1.3      | PyPI 公開を手動実行のみに変更、`cryptography`（開発依存）の下限引き上げ |
 | 0.1.2      | PyPI 公開対応、最小 Python バージョンを 3.11 に引き上げ |
 | 0.1.1      | 最小 Python バージョンを 3.9 に引き上げ |
 | 0.1.0      | 基本機能公開 |
