@@ -12,10 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Security
 - Raised the floor of the transitive development dependency `cryptography` to
-  `>= 48.0.1` to address [GHSA-537c-gmf6-5ccf](https://github.com/pyca/cryptography/security/advisories/GHSA-537c-gmf6-5ccf)
-  (vulnerable OpenSSL bundled in `cryptography` wheels `< 48.0.1`)
+  `>= 50.0.0` to address
+  [GHSA-537c-gmf6-5ccf](https://github.com/pyca/cryptography/security/advisories/GHSA-537c-gmf6-5ccf)
+  (vulnerable OpenSSL bundled in `cryptography` wheels `< 48.0.1`) and
+  [GHSA-g6cj-pr64-35w5](https://github.com/pyca/cryptography/security/advisories/GHSA-g6cj-pr64-35w5)
+  (Bleichenbacher oracle in PKCS#7 `EnvelopedData` decryption in `< 50.0.0`)
   - Added a `[tool.uv]` `constraint-dependencies` entry in `pyproject.toml`
-  - Regenerated `uv.lock` (`cryptography` 48.0.0 → 49.0.0)
+  - Regenerated `uv.lock` (`cryptography` 48.0.0 → 50.0.0)
   - The runtime is unaffected: `cryptography` is only pulled in via `twine` (dev) on Linux
 
 ### Changed
