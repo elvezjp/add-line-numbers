@@ -1,32 +1,49 @@
 name: Publish to PyPI
 
-# tag v* の push をトリガーに、PyPI に sdist と wheel を公開する。
+# 手動トリガー (workflow_dispatch) で TestPyPI / PyPI に配布物を公開する。
 # API トークン不要、Trusted Publisher (OIDC) で認証する。
 #
+# tag push をトリガーにしないのは、タグを「リリースの記録」として運用しており
+# (CONTRIBUTING の「タグを打つ手順」を参照)、依存元リポジトリからの参照固定など
+# 公開を伴わない用途でもタグを打つため。公開のタイミングは明示的に選択する。
+#
 # 事前準備 (管理者作業、PR 本体には含まれない):
-#   1. PyPI 側で elvezjp/add-line-numbers と本 workflow を Trusted Publisher として登録
-#      (https://pypi.org/manage/account/publishing/)
-#   2. GitHub リポ Settings → Environments → "pypi" を作成
-#      (保護ルール: main ブランチ + 特定承認者を推奨)
+#   1. PyPI / TestPyPI 側で elvezjp/add-line-numbers と本 workflow を
+#      Trusted Publisher として登録
+#      (https://pypi.org/manage/account/publishing/ /
+#       https://test.pypi.org/manage/account/publishing/)
+#   2. GitHub リポ Settings → Environments → "pypi" / "testpypi" を作成
+#      (pypi は保護ルール: main ブランチ + 特定承認者を推奨)
 #
 # リリース手順:
-#   git tag vX.Y.Z
-#   git push origin vX.Y.Z
-#   → 本 workflow が起動し、pyproject.toml の version に対応する配布物を PyPI に公開する
+#   1. pyproject.toml の version を更新し、main にマージしてタグを打つ
+#   2. Actions → "Publish to PyPI" → Run workflow → target: testpypi で検証
+#      (別環境で `pip install --index-url https://test.pypi.org/simple/ add-line-numbers`)
+#   3. 問題なければ同 workflow を target: pypi で実行
+#
+# 注意: TestPyPI は同じバージョン番号での再アップロードを許さないため、
+# リハーサルを繰り返す場合は pyproject.toml の version を
+# X.Y.Z.dev0 → X.Y.Z.dev1 → ... のように dev サフィックスで進める運用が無難。
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Publish target"
+        required: true
+        default: "testpypi"
+        type: choice
+        options:
+          - testpypi
+          - pypi
 
 permissions:
   contents: read
 
 jobs:
   # 公開前の防護壁として、テスト全件パスを必須にする。
-  # ci.yml は push/PR でしか走らないので、tag push 経路ではここで明示実行する。
-  test:
-    name: Run tests before publish
+  build:
+    name: Build distribution
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,23 +54,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e .
-          pip install pytest
+          pip install pytest build
       - name: Run tests
         run: pytest test.py -v
-
-  build:
-    name: Build distribution
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install build
-        run: |
-          python -m pip install --upgrade pip
-          pip install build
       - name: Build sdist and wheel
         run: python -m build
       - name: Upload distributions
@@ -62,9 +65,31 @@ jobs:
           name: python-package-distributions
           path: dist/
 
+  publish-testpypi:
+    name: Publish to TestPyPI
+    needs: build
+    if: ${{ inputs.target == 'testpypi' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/add-line-numbers
+    permissions:
+      id-token: write  # Trusted Publisher (OIDC) のために必要
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
   publish-pypi:
     name: Publish to PyPI
     needs: build
+    if: ${{ inputs.target == 'pypi' }}
     runs-on: ubuntu-latest
     environment:
       name: pypi
