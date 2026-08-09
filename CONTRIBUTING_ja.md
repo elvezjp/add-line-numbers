@@ -153,6 +153,22 @@ git tag -a v1.0.0 -m "Release v1.0.0"
 git push origin v1.0.0
 ```
 
+タグの push で PyPI 公開は行われません。タグは、本パッケージを git ソースで参照する
+依存元リポジトリが参照先を固定するための目印としても使うため、公開を伴わない場面でも
+打たれます。
+
+### PyPI へ公開する手順
+
+公開は独立した手動操作です。Actions タブから **Publish to PyPI** ワークフローを
+`workflow_dispatch` で実行します。
+
+1. `target: testpypi` で実行し、クリーンな環境で結果を確認する
+   （`pip install --index-url https://test.pypi.org/simple/ add-line-numbers`）
+2. 問題がなければ同じワークフローを `target: pypi` で実行する
+
+ワークフローはビルド前にテストを実行し、認証は Trusted Publisher（OIDC）で行うため
+API トークンは不要です。
+
 ## ご質問
 
 貢献についてご質問がある場合は、お気軽に：

@@ -153,6 +153,22 @@ git tag -a v1.0.0 -m "Release v1.0.0"
 git push origin v1.0.0
 ```
 
+Pushing a tag does **not** publish to PyPI. Tags also serve as a stable reference
+for downstream repositories that depend on this package via a git source, so they
+are pushed in situations that do not involve publishing.
+
+### Publishing to PyPI
+
+Publishing is a separate, manual step: run the **Publish to PyPI** workflow from
+the Actions tab (`workflow_dispatch`).
+
+1. Run it with `target: testpypi` and verify the result in a clean environment
+   (`pip install --index-url https://test.pypi.org/simple/ add-line-numbers`)
+2. If everything looks right, run the same workflow with `target: pypi`
+
+The workflow runs the test suite before building, and authenticates via Trusted
+Publisher (OIDC), so no API token is required.
+
 ## Questions
 
 For questions about contributing, please:
